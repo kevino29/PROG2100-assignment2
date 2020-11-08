@@ -81,7 +81,7 @@ ostream& operator<<(ostream& os, Student& student) {
     return os;
 }
 
-int main() {
+void program() {
     // Gets student one information
     string name;
     cout << "Welcome to the Student Course Program.\n" << endl;
@@ -136,6 +136,20 @@ int main() {
     studentThree = studentTwo;
     cout << "Custom assignment operator activated." << endl;
     cout << studentThree;
+}
+
+int main() {
+    while (true) {
+        program();
+
+        string input;
+        cout << "Try again? (y or n)" << endl;
+        cin >> input;
+
+        if (input == "n") {
+            break;
+        }
+    }
 
     return 0;
 }
