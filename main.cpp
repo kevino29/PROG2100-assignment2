@@ -84,8 +84,16 @@ ostream& operator<<(ostream& os, Student& student) {
 void program() {
     // Gets student one information
     string name;
-    cout << "Enter student one name: ";
-    cin >> name;
+    while (true) { //null checker for name
+        cout << "Enter student one name: ";
+        getline(cin, name);
+
+        if(name.empty()) {
+            cout << "Name cannot be empty." << endl;
+            continue;
+        }
+        break;
+    }
 
     int max = 1;
     int courseNum = 0;
@@ -93,9 +101,14 @@ void program() {
     string *courses = new string[max];
     do { //Loops until the user enters 'quit'
         cout << "Enter the course (or enter 'quit' to quit): ";
-        cin >> input;
+        getline(cin, input);
 
-        if (input == "quit") continue;
+        if (input.empty()) { //checks for null input
+            cout << "Course name cannot be empty." << endl;
+            continue;
+        }
+
+        if (input == "quit") break;
         courses[courseNum++] = input;
 
         if (courseNum >= max) { //Resizes the array for more storage if full.
@@ -117,8 +130,17 @@ void program() {
     cout << studentOne;
 
     // Gets student two name
-    cout << "Enter student two name: ";
-    cin >> name;
+    name = "";
+    while (true) { //null checker for name
+        cout << "Enter student two name: ";
+        getline(cin, name);
+
+        if(name.empty()) {
+            cout << "Name cannot be empty." << endl;
+            continue;
+        }
+        break;
+    }
     cout << endl;
 
     // Copies the information from student one to student two
@@ -150,5 +172,6 @@ int main() {
         if (input == "n")
             break;
     }
+    cout << "Bye!" << endl;
     return 0;
 }
