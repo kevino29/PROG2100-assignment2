@@ -46,11 +46,20 @@ public:
     }
 
     string getName() {return this->name;}
+
     void setName(string name) {this->name = name;}
 
     int getNumCourses() const {return this->numCourses;}
 
     string* getCourseList() {return this->courseList;}
+
+    void reset() {
+        if (courseList) {
+            delete[] courseList;
+            courseList = nullptr;
+        }
+        numCourses = 0;
+    }
 
     string toString() {
         string output = "Student Name: " + this->name + "\n" +
@@ -148,8 +157,7 @@ void program() {
     cout << "Copy constructor activated" << endl;
     studentTwo.setName(name); //set a new name for student two
 
-    studentOne.~Student();
-    cout << "Destructor activated." << endl;
+    studentOne.reset();
     cout << studentOne;
     cout << studentTwo;
 
@@ -157,6 +165,7 @@ void program() {
     studentThree = studentTwo;
     cout << "Custom assignment operator activated." << endl;
     cout << studentThree;
+    cout << "Destructor activated." << endl;
 }
 
 int main() {
