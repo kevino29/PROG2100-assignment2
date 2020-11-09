@@ -84,7 +84,6 @@ ostream& operator<<(ostream& os, Student& student) {
 void program() {
     // Gets student one information
     string name;
-    cout << "Welcome to the Student Course Program.\n" << endl;
     cout << "Enter student one name: ";
     cin >> name;
 
@@ -139,6 +138,8 @@ void program() {
 }
 
 int main() {
+    cout << "Welcome to the Student Course Program.\n" << endl;
+
     while (true) {
         program();
 
@@ -146,10 +147,8 @@ int main() {
         cout << "Try again? (y or n)" << endl;
         cin >> input;
 
-        if (input == "n") {
+        if (input == "n")
             break;
-        }
     }
-
     return 0;
 }
